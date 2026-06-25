@@ -1,0 +1,422 @@
+<meta charset="UTF-8">
+<title>APP 大改版｜UAT 測試回饋表</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1A73E8;--blue-dk:#1557B0;--blue-lt:#E8F0FE;
+  --text:#202124;--sub:#5F6368;--bg:#F1F3F4;--sur:#FFFFFF;--bd:#DADCE0;
+  --red:#D93025;--red-lt:#FCE8E6;--ora:#E37400;--ora-lt:#FEF7E0;
+  --grn:#188038;--grn-lt:#E6F4EA;
+}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;padding:28px 16px 80px}
+.wrap{max-width:700px;margin:0 auto}
+
+/* Header */
+.fhd{background:var(--blue);color:#fff;border-radius:10px 10px 0 0;padding:28px 32px 22px;border-bottom:4px solid var(--blue-dk)}
+.fhd h1{font-size:21px;font-weight:700;margin-bottom:6px}
+.fhd p{font-size:13px;opacity:.88;line-height:1.5}
+
+/* Section card */
+.sc{background:var(--sur);border:1px solid var(--bd);border-top:none;padding:26px 32px}
+.sc:last-of-type{border-radius:0 0 10px 10px}
+.st{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--blue-lt)}
+
+/* Fields */
+.f{margin-bottom:18px}
+.f>label,.fl>label{display:block;font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:6px}
+.req{color:var(--red);margin-left:2px}
+input[type=text],input[type=date],textarea,select{
+  width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:6px;
+  font-size:14px;font-family:inherit;color:var(--text);background:#fff;outline:none;
+  transition:border-color .15s,box-shadow .15s
+}
+input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.12)}
+textarea{resize:vertical;min-height:76px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fl{margin-bottom:18px}
+
+/* Radio group */
+.rg{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px}
+.ro{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px}
+.ro input{accent-color:var(--blue);cursor:pointer;width:15px;height:15px}
+
+/* Module grid */
+.mg{border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+.mhd{display:grid;grid-template-columns:108px repeat(4,1fr);background:var(--bg);border-bottom:1px solid var(--bd)}
+.mhd .c{padding:8px 6px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--sub);text-align:center}
+.mhd .c:first-child{text-align:left;padding-left:14px}
+.mr{display:grid;grid-template-columns:108px repeat(4,1fr);align-items:center;border-bottom:1px solid var(--bd);transition:background .1s}
+.mr:last-child{border-bottom:none}
+.mr:hover{background:#FAFAFA}
+.c{padding:10px 6px;text-align:center}
+.c:first-child{text-align:left;font-size:13.5px;font-weight:600;padding-left:14px;border-right:1px solid var(--bd)}
+.c input[type=radio]{width:16px;height:16px;accent-color:var(--blue);cursor:pointer}
+.mr .c:nth-child(3) input{accent-color:#F29900}
+.mr .c:nth-child(4) input{accent-color:var(--red)}
+
+/* Bug toggle */
+.btog{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:16px 18px;margin:4px 0 22px}
+.btog-lbl{font-size:14px;font-weight:600;margin-bottom:12px}
+
+/* Bug item */
+.bi{background:var(--sur);border:1px solid #F4C7C3;border-left:4px solid var(--red);border-radius:8px;padding:20px;margin-bottom:14px}
+.bi-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.bi-ttl{font-size:13px;font-weight:700;color:var(--red)}
+.rm-btn{background:none;border:none;color:var(--sub);font-size:20px;cursor:pointer;line-height:1;padding:0 2px}
+.rm-btn:hover{color:var(--red)}
+.add-bug{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border:2px dashed var(--bd);border-radius:8px;background:none;color:var(--sub);font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+.add-bug:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-lt)}
+
+/* Severity */
+.sv-g{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.sv{position:relative}
+.sv input{position:absolute;opacity:0;width:0;height:0}
+.sv label{display:inline-block;padding:5px 13px;border-radius:20px;border:1.5px solid var(--bd);font-size:12.5px;font-weight:600;cursor:pointer;transition:all .12s}
+.s1 label{color:#B00020}.s1 input:checked+label{background:var(--red-lt);border-color:#B00020;border-width:2px}
+.s2 label{color:var(--ora)}.s2 input:checked+label{background:var(--ora-lt);border-color:var(--ora);border-width:2px}
+.s3 label{color:var(--grn)}.s3 input:checked+label{background:var(--grn-lt);border-color:var(--grn);border-width:2px}
+.s4 label{color:var(--sub)}.s4 input:checked+label{background:var(--bg);border-color:var(--sub);border-width:2px}
+
+/* Rating */
+.rat-row{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.rat-name{font-size:13.5px;font-weight:600;min-width:120px;flex-shrink:0}
+.rat-nums{display:flex;gap:6px}
+.rn{width:36px;height:36px;border-radius:50%;border:2px solid var(--bd);background:#fff;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s;color:var(--sub);font-family:inherit}
+.rn:hover{border-color:var(--blue);color:var(--blue)}
+.rn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.rat-hint{font-size:11.5px;color:var(--sub)}
+
+/* Submit area */
+.sub-area{display:flex;justify-content:flex-end;gap:12px;padding:20px 32px;background:var(--sur);border:1px solid var(--bd);border-top:1px solid var(--bd);border-radius:0 0 10px 10px}
+.btn-rst{padding:10px 20px;border:1px solid var(--bd);border-radius:6px;background:#fff;color:var(--sub);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-sub{padding:10px 28px;border:none;border-radius:6px;background:var(--blue);color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s;font-family:inherit}
+.btn-sub:hover{background:var(--blue-dk)}
+
+/* Overlay */
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:99;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.ov-card{background:#fff;border-radius:12px;padding:40px 36px;text-align:center;max-width:360px;box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.ov-icon{font-size:52px;margin-bottom:16px}
+.ov-card h2{font-size:20px;font-weight:700;margin-bottom:8px}
+.ov-card p{font-size:14px;color:var(--sub);line-height:1.6;margin-bottom:22px}
+.note-box{background:var(--blue-lt);border-radius:6px;padding:12px 14px;font-size:13px;color:#174EA6;margin-bottom:4px;text-align:left;line-height:1.5}
+
+@media(max-width:540px){
+  .sc{padding:20px 16px}.fhd{padding:22px 16px 18px}
+  .fr{grid-template-columns:1fr}.sub-area{padding:16px}
+  .mhd .c,.c:first-child{font-size:11px;padding-left:8px}
+  .mhd{grid-template-columns:80px repeat(4,1fr)}.mr{grid-template-columns:80px repeat(4,1fr)}
+}
+</style>
+
+<div class="wrap">
+  <div class="fhd">
+    <h1>APP 大改版｜UAT 測試回饋表</h1>
+    <p>感謝您參與本次測試。填完後點「匯出 CSV」下載檔案，再傳給 Peggy 彙整。<br>若有多筆障礙可在表單內一次新增，不需重複填表。</p>
+  </div>
+
+  <!-- S1 基本資料 -->
+  <div class="sc">
+    <div class="st">一、測試人員基本資料</div>
+    <div class="fr">
+      <div class="fl"><label>姓名<span class="req">*</span></label><input type="text" id="f_name" placeholder="請輸入姓名"></div>
+      <div class="fl"><label>部門／職稱<span class="req">*</span></label><input type="text" id="f_dept" placeholder="例：資訊部／PM"></div>
+    </div>
+    <div class="fr">
+      <div class="fl">
+        <label>測試裝置<span class="req">*</span></label>
+        <div class="rg" style="margin-top:6px">
+          <label class="ro"><input type="radio" name="device" value="iOS（iPhone）"> iOS（iPhone）</label>
+          <label class="ro"><input type="radio" name="device" value="Android"> Android</label>
+        </div>
+      </div>
+      <div class="fl"><label>作業系統版本<span class="req">*</span></label><input type="text" id="f_os" placeholder="例：iOS 17.5"></div>
+    </div>
+    <div class="fr">
+      <div class="fl"><label>APP 版本號<span class="req">*</span></label><input type="text" id="f_app" placeholder="在APP的會員專區版本資訊"></div>
+      <div class="fl"><label>測試日期<span class="req">*</span></label><input type="date" id="f_date"></div>
+    </div>
+  </div>
+
+  <!-- S2 模組測試 -->
+  <div class="sc">
+    <div class="st">二、功能模組測試結果</div>
+    <div class="mg">
+      <div class="mhd">
+        <div class="c">功能模組</div>
+        <div class="c">✅ 正常</div>
+        <div class="c">⚠️ 部分異常</div>
+        <div class="c">❌ 有障礙</div>
+        <div class="c">— 未測試</div>
+      </div>
+      <div class="mr"><div class="c">首頁</div><div class="c"><input type="radio" name="m_home" value="✅ 正常"></div><div class="c"><input type="radio" name="m_home" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_home" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_home" value="— 未測試" checked></div></div>
+      <div class="mr"><div class="c">會員專區</div><div class="c"><input type="radio" name="m_member" value="✅ 正常"></div><div class="c"><input type="radio" name="m_member" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_member" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_member" value="— 未測試" checked></div></div>
+      <div class="mr"><div class="c">購票流程</div><div class="c"><input type="radio" name="m_book" value="✅ 正常"></div><div class="c"><input type="radio" name="m_book" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_book" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_book" value="— 未測試" checked></div></div>
+      <div class="mr"><div class="c">秀泰 Pay</div><div class="c"><input type="radio" name="m_pay" value="✅ 正常"></div><div class="c"><input type="radio" name="m_pay" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_pay" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_pay" value="— 未測試" checked></div></div>
+      <div class="mr"><div class="c">我的票匣</div><div class="c"><input type="radio" name="m_ticket" value="✅ 正常"></div><div class="c"><input type="radio" name="m_ticket" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_ticket" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_ticket" value="— 未測試" checked></div></div>
+      <div class="mr"><div class="c">優惠活動</div><div class="c"><input type="radio" name="m_promo" value="✅ 正常"></div><div class="c"><input type="radio" name="m_promo" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_promo" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_promo" value="— 未測試" checked></div></div>
+      <div class="mr"><div class="c">分票</div><div class="c"><input type="radio" name="m_split" value="✅ 正常"></div><div class="c"><input type="radio" name="m_split" value="⚠️ 部分異常"></div><div class="c"><input type="radio" name="m_split" value="❌ 有障礙"></div><div class="c"><input type="radio" name="m_split" value="— 未測試" checked></div></div>
+    </div>
+
+    <!-- Bug toggle -->
+    <div class="btog" style="margin-top:20px">
+      <div class="btog-lbl">本次測試是否有障礙需要回報？<span class="req">*</span></div>
+      <div class="rg">
+        <label class="ro"><input type="radio" name="has_bug" value="yes" onchange="toggleBug(true)"> 有，需要回報</label>
+        <label class="ro"><input type="radio" name="has_bug" value="no" onchange="toggleBug(false)" checked> 沒有</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3 障礙回報 -->
+  <div class="sc" id="bug-sec" style="display:none">
+    <div class="st">三、障礙回報</div>
+    <div id="bugs-wrap"></div>
+    <button type="button" class="add-bug" onclick="addBug()">＋ 新增另一筆障礙</button>
+  </div>
+
+  <!-- S4 UX 評分 -->
+  <div class="sc">
+    <div class="st">四、UI／UX 體驗評分</div>
+    <div class="rat-row"><div class="rat-name">視覺設計一致性<span class="req">*</span></div><div class="rat-nums" id="r_visual"></div><div class="rat-hint">1＝很差　5＝很好</div></div>
+    <div class="rat-row"><div class="rat-name">操作流暢度<span class="req">*</span></div><div class="rat-nums" id="r_smooth"></div><div class="rat-hint">1＝很差　5＝很好</div></div>
+    <div class="rat-row"><div class="rat-name">資訊呈現清晰度<span class="req">*</span></div><div class="rat-nums" id="r_clear"></div><div class="rat-hint">1＝很差　5＝很好</div></div>
+    <div class="f" style="margin-top:4px">
+      <label>與舊版相比，整體體驗</label>
+      <div class="rg">
+        <label class="ro"><input type="radio" name="vs_old" value="明顯更好"> 明顯更好</label>
+        <label class="ro"><input type="radio" name="vs_old" value="差不多"> 差不多</label>
+        <label class="ro"><input type="radio" name="vs_old" value="較差"> 較差</label>
+        <label class="ro"><input type="radio" name="vs_old" value="未使用過舊版"> 未使用過舊版</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5 綜合意見 -->
+  <div class="sc">
+    <div class="st">五、綜合意見</div>
+    <div class="f"><label>整體評分<span class="req">*</span></label><div class="rat-nums" id="r_overall" style="margin-top:6px"></div><div style="font-size:11.5px;color:var(--sub);margin-top:4px">1＝非常不滿意　5＝非常滿意</div></div>
+    <div class="f"><label>上線前最需要優先修正的問題</label><textarea id="f_priority" placeholder="請說明最需修正的問題..."></textarea></div>
+    <div class="f"><label>其他補充意見</label><textarea id="f_comments" placeholder="任何其他回饋..."></textarea></div>
+  </div>
+
+  <!-- Submit -->
+  <div class="sub-area">
+    <button type="button" class="btn-rst" onclick="resetForm()">重新填寫</button>
+    <button type="button" class="btn-sub" onclick="submitForm()">送出回饋</button>
+  </div>
+</div>
+
+<!-- Success overlay -->
+<div class="ov" id="ov">
+  <div class="ov-card">
+    <div class="ov-icon">✅</div>
+    <h2>回饋已送出！</h2>
+    <p>資料已自動彙整至 Peggy 的 Google 試算表。<br>感謝您完成測試！</p>
+    <div class="note-box">📎 若有截圖或錄影，請另行附上（Line / Email 皆可）</div>
+    <br>
+    <button class="btn-sub" style="margin:0 auto" onclick="document.getElementById('ov').classList.remove('show')">關閉</button>
+  </div>
+</div>
+
+<script>
+// ── Rating buttons ──────────────────────────────────────
+const ratings = {r_visual:0, r_smooth:0, r_clear:0, r_overall:0};
+
+function buildRating(id) {
+  const wrap = document.getElementById(id);
+  for (let i = 1; i <= 5; i++) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'rn'; b.textContent = i;
+    b.onclick = () => setRating(id, i);
+    wrap.appendChild(b);
+  }
+}
+
+function setRating(id, val) {
+  ratings[id] = val;
+  const btns = document.getElementById(id).querySelectorAll('.rn');
+  btns.forEach((b, i) => b.classList.toggle('sel', i < val));
+}
+
+['r_visual','r_smooth','r_clear','r_overall'].forEach(buildRating);
+
+// ── Bug section ─────────────────────────────────────────
+let bugIdx = 0;
+
+function toggleBug(show) {
+  const sec = document.getElementById('bug-sec');
+  sec.style.display = show ? 'block' : 'none';
+  if (show && document.getElementById('bugs-wrap').children.length === 0) addBug();
+}
+
+function addBug() {
+  bugIdx++;
+  const id = bugIdx;
+  const modules = ['首頁','會員專區','購票流程','秀泰 Pay','我的票匣','優惠活動','分票','其他'];
+  const opts = modules.map(m => `<option value="${m}">${m}</option>`).join('');
+  const html = `
+    <div class="bi" id="bug${id}">
+      <div class="bi-hd">
+        <div class="bi-ttl">障礙 #${id}</div>
+        <button type="button" class="rm-btn" onclick="removeBug(${id})" title="移除此筆">×</button>
+      </div>
+      <div class="f"><label>發生於哪個模組<span class="req">*</span></label><select id="b${id}_mod"><option value="">請選擇</option>${opts}</select></div>
+      <div class="f"><label>障礙描述<span class="req">*</span></label><textarea id="b${id}_desc" placeholder="發生了什麼問題？"></textarea></div>
+      <div class="f"><label>重現步驟</label><textarea id="b${id}_steps" placeholder="1. 進入＿＿頁面&#10;2. 點擊＿＿&#10;3. 出現＿＿"></textarea></div>
+      <div class="fr">
+        <div class="fl"><label>預期結果（正確應該是？）</label><input type="text" id="b${id}_exp" placeholder="應該要..."></div>
+        <div class="fl"><label>實際結果（NG 狀況）</label><input type="text" id="b${id}_act" placeholder="實際出現..."></div>
+      </div>
+      <div class="f">
+        <label>嚴重程度<span class="req">*</span></label>
+        <div class="sv-g" style="margin-top:6px">
+          <div class="sv s1"><input type="radio" name="sev${id}" id="s${id}1" value="🔴 阻斷"><label for="s${id}1">🔴 阻斷（完全無法使用）</label></div>
+          <div class="sv s2"><input type="radio" name="sev${id}" id="s${id}2" value="🟠 嚴重"><label for="s${id}2">🟠 嚴重（核心流程受影響）</label></div>
+          <div class="sv s3"><input type="radio" name="sev${id}" id="s${id}3" value="🟡 一般"><label for="s${id}3">🟡 一般（功能可用但有問題）</label></div>
+          <div class="sv s4"><input type="radio" name="sev${id}" id="s${id}4" value="🟢 輕微"><label for="s${id}4">🟢 輕微（畫面／文字小錯誤）</label></div>
+        </div>
+      </div>
+      <div class="f"><label>截圖／錄影檔名或備註</label><input type="text" id="b${id}_ss" placeholder="例：首頁截圖.png（請另行傳送截圖檔案給 Peggy）"></div>
+    </div>`;
+  document.getElementById('bugs-wrap').insertAdjacentHTML('beforeend', html);
+}
+
+function removeBug(id) {
+  const el = document.getElementById('bug'+id);
+  if (el) el.remove();
+}
+
+// ── Helpers ──────────────────────────────────────────────
+function getRadio(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : '';
+}
+
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function csvEsc(s) { return '"' + String(s||'').replace(/"/g,'""') + '"'; }
+
+// ── Validation ───────────────────────────────────────────
+function validate() {
+  const errs = [];
+  if (!val('f_name')) errs.push('姓名');
+  if (!val('f_dept')) errs.push('部門／職稱');
+  if (!getRadio('device')) errs.push('測試裝置');
+  if (!val('f_os')) errs.push('作業系統版本');
+  if (!val('f_app')) errs.push('APP 版本號');
+  if (!val('f_date')) errs.push('測試日期');
+  if (!ratings.r_visual) errs.push('視覺設計評分');
+  if (!ratings.r_smooth) errs.push('操作流暢度評分');
+  if (!ratings.r_clear) errs.push('資訊清晰度評分');
+  if (!ratings.r_overall) errs.push('整體評分');
+  if (getRadio('has_bug') === 'yes') {
+    const bugs = document.getElementById('bugs-wrap').children;
+    for (let i = 0; i < bugs.length; i++) {
+      const id = bugs[i].id.replace('bug','');
+      if (!val('b'+id+'_mod')) errs.push(`障礙 #${id}：請選擇模組`);
+      if (!val('b'+id+'_desc')) errs.push(`障礙 #${id}：請填寫描述`);
+      if (!getRadio('sev'+id)) errs.push(`障礙 #${id}：請選擇嚴重程度`);
+    }
+  }
+  return errs;
+}
+
+// ── Submit ────────────────────────────────────────────────
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxD_FR-P-C2w6PzL-0wYFz67exURtYDWuA3Vd9Tl5-S2wF2x_iS9JQ1pBhOzsorS-u/exec';
+
+function submitForm() {
+  const errs = validate();
+  if (errs.length) {
+    alert('請補齊以下必填項目：\n\n• ' + errs.join('\n• '));
+    return;
+  }
+
+  const name = val('f_name');
+  const date = val('f_date').replace(/-/g,'');
+
+  // Collect bugs
+  const bugEls = document.getElementById('bugs-wrap').children;
+  const bugs = [];
+  for (let i = 0; i < bugEls.length; i++) {
+    const id = bugEls[i].id.replace('bug','');
+    bugs.push({
+      mod: val('b'+id+'_mod'),
+      desc: val('b'+id+'_desc'),
+      steps: val('b'+id+'_steps'),
+      exp: val('b'+id+'_exp'),
+      act: val('b'+id+'_act'),
+      sev: getRadio('sev'+id),
+      ss: val('b'+id+'_ss')
+    });
+  }
+
+  // Build headers
+  const baseHdr = ['姓名','部門職稱','測試裝置','OS版本','APP版本','測試日期',
+    '首頁','會員專區','購票流程','秀泰Pay','我的票匣','優惠活動','分票',
+    '視覺一致性(1-5)','操作流暢度(1-5)','資訊清晰度(1-5)','與舊版比較',
+    '整體評分(1-5)','優先修正項目','其他意見','障礙數量'];
+  const bugHdrs = [];
+  bugs.forEach((_,i) => {
+    const n = i+1;
+    bugHdrs.push(`障礙${n}_模組`,`障礙${n}_描述`,`障礙${n}_重現步驟`,`障礙${n}_預期結果`,`障礙${n}_實際結果`,`障礙${n}_嚴重程度`,`障礙${n}_截圖備註`);
+  });
+
+  // Build data row
+  const baseRow = [
+    name, val('f_dept'), getRadio('device'), val('f_os'), val('f_app'), val('f_date'),
+    getRadio('m_home'), getRadio('m_member'), getRadio('m_book'),
+    getRadio('m_pay'), getRadio('m_ticket'), getRadio('m_promo'), getRadio('m_split'),
+    ratings.r_visual, ratings.r_smooth, ratings.r_clear, getRadio('vs_old'),
+    ratings.r_overall, val('f_priority'), val('f_comments'), bugs.length
+  ];
+  const bugRow = [];
+  bugs.forEach(b => bugRow.push(b.mod, b.desc, b.steps, b.exp, b.act, b.sev, b.ss));
+
+  // Send to Google Sheets via image GET (bypasses local file restrictions)
+  const params = new URLSearchParams({
+    name: name,
+    dept: val('f_dept'),
+    device: getRadio('device'),
+    os: val('f_os'),
+    app: val('f_app'),
+    date: val('f_date'),
+    m_home: getRadio('m_home'),
+    m_member: getRadio('m_member'),
+    m_book: getRadio('m_book'),
+    m_pay: getRadio('m_pay'),
+    m_ticket: getRadio('m_ticket'),
+    m_promo: getRadio('m_promo'),
+    m_split: getRadio('m_split'),
+    r_visual: ratings.r_visual,
+    r_smooth: ratings.r_smooth,
+    r_clear: ratings.r_clear,
+    vs_old: getRadio('vs_old'),
+    r_overall: ratings.r_overall,
+    priority: val('f_priority'),
+    comments: val('f_comments'),
+    bugs: JSON.stringify(bugs)
+  });
+  const img = new Image();
+  img.src = SCRIPT_URL + '?' + params.toString();
+
+  document.getElementById('ov').classList.add('show');
+}
+
+function resetForm() {
+  if (!confirm('確定要清除所有填答內容並重新填寫嗎？')) return;
+  document.querySelectorAll('input[type=text],input[type=date],textarea').forEach(el => el.value = '');
+  document.querySelectorAll('input[type=radio]').forEach(el => el.checked = false);
+  document.querySelectorAll('input[name$="_未測試"]');
+  document.querySelectorAll('.rn').forEach(el => el.classList.remove('sel'));
+  Object.keys(ratings).forEach(k => ratings[k] = 0);
+  document.getElementById('bugs-wrap').innerHTML = '';
+  bugIdx = 0;
+  document.getElementById('bug-sec').style.display = 'none';
+  document.querySelectorAll('input[value="— 未測試"]').forEach(el => el.checked = true);
+  document.querySelector('input[name="has_bug"][value="no"]').checked = true;
+}
+</script>
