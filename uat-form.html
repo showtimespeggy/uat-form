@@ -132,7 +132,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">4.</span><div class="qbody"><div class="qtext">Banner／輪播點擊後，是否可正確進入對應頁面？</div></div></div><div class="qopts"><span class="ok" data-n="z1_home_q4" onclick="z1s('z1_home_q4','正常',this)">✓ 正常</span><span class="ng" data-n="z1_home_q4" onclick="z1s('z1_home_q4','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">5.</span><div class="qbody"><div class="qtext">首頁電影、場次、優惠等資訊是否正確顯示？</div></div></div><div class="qopts"><span class="ok" data-n="z1_home_q5" onclick="z1s('z1_home_q5','正常',this)">✓ 正常</span><span class="ng" data-n="z1_home_q5" onclick="z1s('z1_home_q5','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">6.</span><div class="qbody"><div class="qtext">首頁畫面是否完整，沒有跑版、圖片異常或文字重疊？</div></div></div><div class="qopts"><span class="ok" data-n="z1_home_q6" onclick="z1s('z1_home_q6','正常',this)">✓ 正常</span><span class="ng" data-n="z1_home_q6" onclick="z1s('z1_home_q6','異常',this)">✗ 異常</span></div></div>
-  <div class="ni"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_home_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni z1-note-wrap" id="z1_home_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_home_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- Z1 二、會員專區 -->
@@ -144,7 +144,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">4.</span><div class="qbody"><div class="qtext">會員專區細項功能是否可正常操作？</div><div class="qeg">如：修改資料、查看紀錄、會員條碼、帳號設定</div></div></div><div class="qopts"><span class="ok" data-n="z1_mem_q4" onclick="z1s('z1_mem_q4','正常',this)">✓ 正常</span><span class="ng" data-n="z1_mem_q4" onclick="z1s('z1_mem_q4','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">5.</span><div class="qbody"><div class="qtext">會員條碼、電子載具或相關會員資訊是否可正常顯示？</div></div></div><div class="qopts"><span class="ok" data-n="z1_mem_q5" onclick="z1s('z1_mem_q5','正常',this)">✓ 正常</span><span class="ng" data-n="z1_mem_q5" onclick="z1s('z1_mem_q5','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">6.</span><div class="qbody"><div class="qtext">操作時是否有遇到錯誤、卡住或無法完成的情況？</div></div></div><div class="qopts"><span class="ok" data-n="z1_mem_q6" onclick="z1s('z1_mem_q6','正常',this)">✓ 正常</span><span class="ng" data-n="z1_mem_q6" onclick="z1s('z1_mem_q6','異常',this)">✗ 異常</span></div></div>
-  <div class="ni"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_mem_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni z1-note-wrap" id="z1_mem_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_mem_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- Z1 三、購票功能 -->
@@ -159,7 +159,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">7.</span><div class="qbody"><div class="qtext">餐點加購是否可正常操作？</div></div></div><div class="qopts"><span class="ok" data-n="z1_book_q7" onclick="z1s('z1_book_q7','正常',this)">✓ 正常</span><span class="ng" data-n="z1_book_q7" onclick="z1s('z1_book_q7','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">8.</span><div class="qbody"><div class="qtext">結帳付款是否可正常完成？</div></div></div><div class="qopts"><span class="ok" data-n="z1_book_q8" onclick="z1s('z1_book_q8','正常',this)">✓ 正常</span><span class="ng" data-n="z1_book_q8" onclick="z1s('z1_book_q8','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">9.</span><div class="qbody"><div class="qtext">購票完成後，是否有正確產生票券？</div></div></div><div class="qopts"><span class="ok" data-n="z1_book_q9" onclick="z1s('z1_book_q9','正常',this)">✓ 正常</span><span class="ng" data-n="z1_book_q9" onclick="z1s('z1_book_q9','異常',this)">✗ 異常</span></div></div>
-  <div class="ni"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_book_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni z1-note-wrap" id="z1_book_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_book_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- Z1 四、秀泰 Pay -->
@@ -173,7 +173,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">6.</span><div class="qbody"><div class="qtext">交易紀錄是否有正常產生？</div></div></div><div class="qopts"><span class="ok" data-n="z1_pay_q6" onclick="z1s('z1_pay_q6','正常',this)">✓ 正常</span><span class="ng" data-n="z1_pay_q6" onclick="z1s('z1_pay_q6','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">7.</span><div class="qbody"><div class="qtext">交易紀錄內容是否正確？</div><div class="qeg">如：消費金額、交易時間、付款方式、消費紀錄</div></div></div><div class="qopts"><span class="ok" data-n="z1_pay_q7" onclick="z1s('z1_pay_q7','正常',this)">✓ 正常</span><span class="ng" data-n="z1_pay_q7" onclick="z1s('z1_pay_q7','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">8.</span><div class="qbody"><div class="qtext">秀泰 Pay 畫面是否完整，沒有跑版或顯示異常？</div></div></div><div class="qopts"><span class="ok" data-n="z1_pay_q8" onclick="z1s('z1_pay_q8','正常',this)">✓ 正常</span><span class="ng" data-n="z1_pay_q8" onclick="z1s('z1_pay_q8','異常',this)">✗ 異常</span></div></div>
-  <div class="ni"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_pay_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni z1-note-wrap" id="z1_pay_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_pay_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- Z1 五、票匣 -->
@@ -185,7 +185,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">4.</span><div class="qbody"><div class="qtext">QR Code／取票碼／驗票碼是否清楚可辨識？</div></div></div><div class="qopts"><span class="ok" data-n="z1_tkt_q4" onclick="z1s('z1_tkt_q4','正常',this)">✓ 正常</span><span class="ng" data-n="z1_tkt_q4" onclick="z1s('z1_tkt_q4','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">5.</span><div class="qbody"><div class="qtext">未使用、已使用、過期票券狀態是否正確？</div></div></div><div class="qopts"><span class="ok" data-n="z1_tkt_q5" onclick="z1s('z1_tkt_q5','正常',this)">✓ 正常</span><span class="ng" data-n="z1_tkt_q5" onclick="z1s('z1_tkt_q5','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">6.</span><div class="qbody"><div class="qtext">票券相關操作是否可正常使用？</div><div class="qeg">如：查看票券、使用過票券、過期票券、重新整理票券</div></div></div><div class="qopts"><span class="ok" data-n="z1_tkt_q6" onclick="z1s('z1_tkt_q6','正常',this)">✓ 正常</span><span class="ng" data-n="z1_tkt_q6" onclick="z1s('z1_tkt_q6','異常',this)">✗ 異常</span></div></div>
-  <div class="ni"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_tkt_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni z1-note-wrap" id="z1_tkt_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_tkt_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- Z1 六、分票 -->
@@ -198,7 +198,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">5.</span><div class="qbody"><div class="qtext">分票完成後，收票方是否有正常收到通知？</div></div></div><div class="qopts"><span class="ok" data-n="z1_spl_q5" onclick="z1s('z1_spl_q5','正常',this)">✓ 正常</span><span class="ng" data-n="z1_spl_q5" onclick="z1s('z1_spl_q5','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">6.</span><div class="qbody"><div class="qtext">收票方是否可正常收到票券？</div></div></div><div class="qopts"><span class="ok" data-n="z1_spl_q6" onclick="z1s('z1_spl_q6','正常',this)">✓ 正常</span><span class="ng" data-n="z1_spl_q6" onclick="z1s('z1_spl_q6','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">7.</span><div class="qbody"><div class="qtext">分票後，原票券與分出票券狀態是否正確？</div></div></div><div class="qopts"><span class="ok" data-n="z1_spl_q7" onclick="z1s('z1_spl_q7','正常',this)">✓ 正常</span><span class="ng" data-n="z1_spl_q7" onclick="z1s('z1_spl_q7','異常',this)">✗ 異常</span></div></div>
-  <div class="ni"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_spl_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni z1-note-wrap" id="z1_spl_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_spl_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- Z1 七、優惠活動 -->
@@ -211,7 +211,7 @@ textarea{resize:vertical;min-height:72px}
   <div class="qr"><div class="ql"><span class="qnum">5.</span><div class="qbody"><div class="qtext">活動圖片是否可正常顯示？</div></div></div><div class="qopts"><span class="ok" data-n="z1_prm_q5" onclick="z1s('z1_prm_q5','正常',this)">✓ 正常</span><span class="ng" data-n="z1_prm_q5" onclick="z1s('z1_prm_q5','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">6.</span><div class="qbody"><div class="qtext">活動連結、按鈕是否可正常點擊？</div></div></div><div class="qopts"><span class="ok" data-n="z1_prm_q6" onclick="z1s('z1_prm_q6','正常',this)">✓ 正常</span><span class="ng" data-n="z1_prm_q6" onclick="z1s('z1_prm_q6','異常',this)">✗ 異常</span></div></div>
   <div class="qr"><div class="ql"><span class="qnum">7.</span><div class="qbody"><div class="qtext">活動資訊是否正確顯示？</div><div class="qeg">如：活動內容、適用條件、活動期間、適用影城</div></div></div><div class="qopts"><span class="ok" data-n="z1_prm_q7" onclick="z1s('z1_prm_q7','正常',this)">✓ 正常</span><span class="ng" data-n="z1_prm_q7" onclick="z1s('z1_prm_q7','異常',this)">✗ 異常</span></div></div>
-  <div class="ni sc-last"><label>📎 異常說明／截圖補充（選填）</label><textarea id="z1_prm_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
+  <div class="ni sc-last z1-note-wrap" id="z1_prm_note_wrap" style="display:none"><label>📎 異常說明／截圖補充 <span class="req">*</span>（必填）</label><textarea id="z1_prm_note" placeholder="請描述異常情況，截圖另外 Teams 傳送給資訊部 Peggy Li"></textarea></div>
 </div>
 
 <!-- ══════════ 第二區 ══════════ -->
@@ -344,11 +344,21 @@ var SCRIPT_URL='https://script.google.com/macros/s/AKfycbzxD_FR-P-C2w6PzL-0wYFz6
 var z1State={}, z2State={}, z3State={};
 
 // ── Zone 1: 正常/異常 buttons ──
+var Z1_MODS={home:6,mem:6,book:9,pay:8,tkt:6,spl:7,prm:7};
 function z1s(name,val,el){
   z1State[name]=val;
   var els=document.querySelectorAll('[data-n="'+name+'"]');
   els.forEach(function(e){e.classList.remove('ck')});
   el.classList.add('ck');
+  var mod=name.split('_')[1];
+  checkZ1Note(mod);
+}
+function checkZ1Note(mod){
+  var qs=Z1_MODS[mod];if(!qs)return;
+  var hasNG=false;
+  for(var i=1;i<=qs;i++){if(z1State['z1_'+mod+'_q'+i]==='異常'){hasNG=true;break;}}
+  var wrap=document.getElementById('z1_'+mod+'_note_wrap');
+  if(wrap)wrap.style.display=hasNG?'block':'none';
 }
 
 // ── Zone 2: rating rings ──
@@ -409,22 +419,42 @@ function ynSel(name,val,el){
 
 // ── Validate ──
 var Z2_IMP_NAMES={z2_home:'首頁',z2_mem:'會員專區',z2_book:'購票流程',z2_pay:'秀泰Pay',z2_tkt:'我的票匣',z2_spl:'分票流程',z2_prm:'優惠活動'};
+var Z1_NAMES={home:'首頁',mem:'會員專區',book:'購票功能',pay:'秀泰Pay',tkt:'我的票匣',spl:'分票功能',prm:'優惠活動'};
 function validate(){
   var errs=[];
   if(!document.getElementById('f_name').value.trim())errs.push('請填寫姓名');
+  // 第一區：每題必選
+  Object.keys(Z1_MODS).forEach(function(mod){
+    var missing=[];
+    for(var i=1;i<=Z1_MODS[mod];i++){
+      if(!z1State['z1_'+mod+'_q'+i])missing.push(i);
+    }
+    if(missing.length>0)errs.push('第一區【'+Z1_NAMES[mod]+'】第 '+missing.join('、')+' 題尚未選擇');
+    var wrap=document.getElementById('z1_'+mod+'_note_wrap');
+    if(wrap&&wrap.style.display!='none'){
+      var ta=document.getElementById('z1_'+mod+'_note');
+      if(ta&&!ta.value.trim())errs.push('第一區【'+Z1_NAMES[mod]+'】有異常項目，請填寫異常說明');
+    }
+  });
+  // 第二區：每題必填
   Z2_MODULES.forEach(function(m){
+    var missing2=[];
+    for(var i=1;i<=m.qs;i++){
+      if(!z2State[m.key+'_q'+i])missing2.push(i);
+    }
+    if(missing2.length>0)errs.push('第二區【'+Z2_IMP_NAMES[m.key]+'】第 '+missing2.join('、')+' 題尚未評分');
     var wrap=document.getElementById('imp_'+m.key);
     if(wrap&&wrap.style.display!='none'){
       var ta=document.getElementById(m.key+'_improve');
       if(ta&&!ta.value.trim())errs.push('第二區【'+Z2_IMP_NAMES[m.key]+'】流程改善建議為必填');
     }
   });
+  // 第三區
   if(!z3State['z3_q1'])errs.push('第三區第1題：請選擇是否遇到重大異常');
   if(!document.getElementById('z3_q2').value.trim())errs.push('第三區第2題：請填寫最需優先改善的功能');
   if(!document.getElementById('z3_q3').value.trim())errs.push('第三區第3題：請填寫最不直覺的流程');
   return errs;
 }
-
 // ── Submit ──
 function submitForm(){
   var errs=validate();
@@ -462,10 +492,10 @@ function submitForm(){
   img.onload=img.onerror=function(){
     document.getElementById('ov-ico').textContent='✅';
     document.getElementById('ov-ttl').textContent='感謝您的回饋！';
-    document.getElementById('ov-msg').textContent='您的測試意見已成功送出，感謝參與本次 UAT 測試！';
+    document.getElementById('ov-msg').innerHTML='您的測試意見已成功送出！<br>感謝您參與本次 UAT 測試。';
     var nb=document.getElementById('ov-note');
     nb.style.display='block';
-    nb.textContent='若有截圖需附上，請另行傳送給系統整合課 Peggy。';
+    nb.textContent='若有截圖需附上，請另行 Teams 給資訊部 Peggy Li。';
     document.getElementById('ov-btn').style.display='inline-block';
   };
   img.src=url;
@@ -481,6 +511,7 @@ function resetForm(){
   document.querySelectorAll('.yn').forEach(function(e){e.classList.remove('ck')});
   document.querySelectorAll('textarea').forEach(function(e){e.value=''});
   document.querySelectorAll('.imp-wrap').forEach(function(e){e.style.display='none'});
+  document.querySelectorAll('.z1-note-wrap').forEach(function(e){e.style.display='none'});
 }
 </script>
 </div>
